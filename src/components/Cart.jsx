@@ -1,0 +1,62 @@
+import { useCartContext } from "../context/CartContext"
+import CartItem from "./CartItem";
+import { Link } from "react-router-dom";
+
+const Cart = ({ isCartOpen, closeCart }) => {
+
+    // Contexto Cart
+    const { cart } = useCartContext();
+    
+    return (
+    <>
+        {isCartOpen && 
+        <div className="fixed inset-0 bg-black/85 backdrop-blur-[2px] flex items-center justify-center z-50">
+            
+            <div className="relative bg-white dark:bg-[#363636] dark:text-[#c9c9c9] p-2 rounded shadow-md w-[80%] max-h-[80%] overflow-hidden flex flex-col items-center sm:p-4 sm:w-[60%] lg:w-[50%]">
+                
+                {/* Botón de cerrar */}
+                <i
+                    className="bi bi-x-lg absolute top-3 right-3 cursor-pointer hover:text-xl"
+                    onClick={closeCart}
+                ></i>
+
+                {/* Título */}
+                <h2 className="text-xl font-bold my-4 text-center sm:text-2xl lg:text-4xl">Carrito</h2>
+
+                {/* lista de productos del carrito */}
+                {cart.length === 0 ? (
+                    <div className="text-center py-12">
+                    <i className="bi bi-cart h-16 w-16 mx-auto text-gray-300 mb-4"></i>
+                    <h3 className="mb-2 text-gray-900">Tu carrito está vacío</h3>
+                    <p className="text-gray-600 mb-6">
+                        Agrega productos para comenzar tu compra
+                    </p>
+                    </div>
+                ) : (
+                    <div className="flex flex-col items-center gap-2 overflow-y-auto w-full max-h-[60vh] mt-2">
+                    {cart.map((item) => (
+                        <CartItem 
+                        key={item.id} 
+                        item={item}
+                        />
+                    ))}
+                    </div>
+                )}
+                
+                <Link 
+                    to="/checkout" 
+                    onClick={closeCart} 
+                    className="w-full mt-4 text-gray-600 dark:text-[#c9c9c9] tracking-wide font-medium bg-[#fdfdfd] dark:bg-[#363636] p-1 border border-gray-600 dark:border-[#c9c9c9] rounded-md transition-all ease-linear duration-200 hover:[box-shadow:2px_2px_10px_#00000048] hover:cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base md:text-lg text-center block"
+                >
+                    Ir al Checkout
+                </Link>
+            </div>
+        </div>
+        }
+    </>
+)
+}
+
+export default Cart
+
+
