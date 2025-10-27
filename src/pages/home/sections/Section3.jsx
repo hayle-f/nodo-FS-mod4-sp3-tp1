@@ -12,9 +12,9 @@ const Section3 = () => {
         <AuricularSlider
         /* Array de imag(props) que se pasan */
         images={[
-          { src: "src/assets/soundcore_10.png", alt: "Auricular azul" },
-          { src: "src/assets/Aiwa_BT-301-2.png", alt: "Auricular blanco" },
-          { src: "src/assets/Soul_Neox_Bt250.png", alt: "Auricular violeta" },
+          { src: "imgs/soundcore_10.png", alt: "Auricular azul" },
+          { src: "imgs/Aiwa_BT-301-2.png", alt: "Auricular blanco" },
+          { src: "imgs/Soul_Neox_Bt250.png", alt: "Auricular violeta" },
         ]}
       />
       </div>

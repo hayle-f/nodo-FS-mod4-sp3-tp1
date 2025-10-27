@@ -10,7 +10,7 @@ const Footer = () => {
   return (
     <footer className="bg-[#333333b3] dark:bg-[#363636] text-white flex justify-between items-center py-2 px-4 text-sm">
         <img 
-          src="src/assets/aurislogo.png" 
+          src="imgs/aurislogo.png" 
           alt="logo" id="logofooter" 
           className="bg-[#000000c7] dark:bg-[#eeeeee] h-auto w-[30px] rounded-full [box-shadow:2px_2px_8px_#00000071] transition-transform duration-600 hover:[transform:rotateY(180deg)]" 
         />
