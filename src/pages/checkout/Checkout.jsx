@@ -24,10 +24,10 @@ const Checkout = () => {
           <div className="lg:col-span-2">
             <div className="bg-white rounded-lg [box-shadow:2px_2px_10px_#00000048] p-6 dark:bg-[#363636]">
               {cart.length === 0 ? (
-                <div className="text-center py-12">
-                  <i className="bi bi-cart h-16 w-16 mx-auto text-[#333333] dark:text-[#e2e2e2] mb-4"></i>
-                  <h3 className="mb-2 text-[#333333] dark:text-[#e2e2e2]">Tu carrito está vacío</h3>
-                  <p className="text-[#141414] dark:text-[#c9c9c9] mb-6">
+                <div className="text-center py-12 text-[#333333dd] dark:text-[#c9c9c9]">
+                  <i className="bi bi-cart h-16 w-16 mx-auto mb-4"></i>
+                  <h3 className="mb-2">Tu carrito está vacío</h3>
+                  <p className=" mb-6">
                     Agrega productos para comenzar tu compra
                   </p>
                   <Link to="/products" className="text-gray-600 dark:text-[#c9c9c9] tracking-wide font-medium bg-[#fdfdfd] dark:bg-[#363636] p-2 border border-gray-600 dark:border-[#c9c9c9] rounded-md transition-all ease-linear duration-200 hover:[box-shadow:2px_2px_10px_#00000048] hover:cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base md:text-lg">
@@ -50,7 +50,7 @@ const Checkout = () => {
           {/* Order Summary */}
           <div className="lg:col-span-1">
             <div className="bg-white dark:bg-[#363636] text-gray-600 dark:text-[#c9c9c9] rounded-lg [box-shadow:2px_2px_10px_#00000048] p-6 sticky top-8 lg:p-4">
-              <h2 className="mb-6">Resumen del Pedido</h2>
+              <h2 className="mb-6 text-sm sm:text-base md:text-lg lg:text-xl font-semibold">Resumen del Pedido</h2>
 
               <div className="space-y-4 mb-6 text-[#333333dd] dark:text-[#c9c9c9]">
                 <div className="flex justify-between">
@@ -70,7 +70,7 @@ const Checkout = () => {
                   )}
 
                   {subtotal > 0 && shipping === 0 && (
-                    <span className="text-green-600 text-sm sm:text-base md:text-lg lg:text-xl">
+                    <span className="text-green-600 dark:text-green-200 text-sm sm:text-base md:text-lg lg:text-xl">
                       ¡Gratis!
                     </span>
                   )}
@@ -91,18 +91,18 @@ const Checkout = () => {
                   </span>
                 </div>
 
-                {shipping === 0 && (
+                {subtotal >= 90000 && (
                   <div className="bg-green-50 dark:bg-[#363636] border border-green-200 rounded-lg p-1 text-center text-sm sm:text-base md:text-lg lg:text-xl sm:p-3">
-                    <p className="text-green-700 text-sm">
+                    <p className="text-green-700 dark:text-green-200 text-sm">
                       ✓ Envío gratis en compras superiores a <span className="font-['Segoe_UI',Tahoma,Geneva,Verdana,sans-serif]">$90000</span>
                     </p>
                   </div>
                 )}
 
-                {shipping > 0 && subtotal > 88500 && (
-                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
-                    <p className="text-blue-700 text-sm">
-                      Agrega {formatPrice(90000 - subtotal)} más para envío gratis
+                {shipping > 0 && subtotal < 88500 && (
+                  <div className="bg-blue-50 dark:bg-[#363636] border border-blue-200 rounded-lg p-1 text-center text-sm sm:text-base md:text-lg lg:text-xl sm:p-3">
+                    <p className="text-blue-700 dark:text-blue-200 text-sm ">
+                      Agrega <span className="font-['Segoe_UI',Tahoma,Geneva,Verdana,sans-serif]">{formatPrice(90000 - subtotal)}</span> más para envío gratis
                     </p>
                   </div>
                 )}
@@ -115,9 +115,14 @@ const Checkout = () => {
                 </div>
               </div>
 
-              <button className="w-full text-gray-600 dark:text-[#c9c9c9] tracking-wide font-medium bg-[#fdfdfd] dark:bg-[#363636] p-2 border border-gray-600 dark:border-[#c9c9c9] rounded-md transition-all ease-linear duration-200 hover:[box-shadow:2px_2px_10px_#00000048] hover:cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base md:text-lg" disabled={cart.length === 0}>
-                Proceder al Pago
-              </button>
+              {cart.length > 0 && (
+                <button 
+                  className="w-full text-gray-600 dark:text-[#c9c9c9] tracking-wide font-medium bg-[#fdfdfd] dark:bg-[#363636] p-2 border border-gray-600 dark:border-[#c9c9c9] rounded-md transition-all ease-linear duration-200 hover:[box-shadow:2px_2px_10px_#00000048] hover:cursor-pointer text-sm sm:text-base md:text-lg"
+                >
+                  Proceder al Pago
+                </button>
+              )}
+              
 
               <div className="mt-6 pt-6 border-t border-gray-200 text-[10px] sm:text-sm md:text-[10px]">
                 <div className="flex justify-center gap-2 text-sm text-[#333333dd] dark:text-[#c9c9c9]">

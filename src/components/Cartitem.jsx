@@ -6,8 +6,8 @@ const CartItem = ({ item }) => {
     const { removeFromCart, updateQuantity } = useCartContext();
 
     return (
-    <div className="flex flex-col items-center text-center gap-2 border-b p-2 dark:border-[#424242] border-gray-200 rounded hover:[box-shadow:2px_2px_10px_#00000048] transition-all sm:flex-row md:gap-4 lg:gap-6 md:p-4">
-        <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-32 lg:h-32 flex-shrink-0 flex items-center justify-center">
+    <div className="flex flex-col items-center text-center gap-2 border-b p-2 dark:border-[#424242] border-gray-200 rounded w-full hover:[box-shadow:2px_2px_10px_#00000048] transition-all  sm:flex-row md:gap-4 lg:gap-6 md:p-4">
+        <div className="w-20 h-20 lg:w-32 lg:h-32 flex-shrink-0 flex items-center justify-center">
             <img 
             src={item.imagen} 
             alt={item.nombre} 
