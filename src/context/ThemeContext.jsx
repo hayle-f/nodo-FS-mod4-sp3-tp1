@@ -10,9 +10,11 @@ export const ThemeProvider = ({ children }) => {
         const storedTheme = localStorage.getItem('theme');
         if (storedTheme) return storedTheme;
 
-        // Si no hay, usar la preferencia del sistema
+        /* Si no hay, usar la preferencia del sistema
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        return prefersDark ? 'dark' : 'light';
+        return prefersDark ? 'dark' : 'light'; */
+        
+        return 'light'; // valor por defecto
     });
 
     const toggleTheme = () => {
